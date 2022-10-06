@@ -10,6 +10,8 @@ class HttpExecption extends Error {
 }
 
 const errorMiddleware = (err: Error, _req: Request, res: Response, _next: NextFunction) => {
+  console.log('erro', err);
+  
   const { status = 500, message } = err as HttpExecption;
   res.status(status).json({ message });
 };
