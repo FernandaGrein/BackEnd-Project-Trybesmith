@@ -16,10 +16,10 @@ export default class LoginService {
     const user = await this.model.getUser(userLogin);
 
     if (user.length === 0) {
-      return { message: 'Username or password invalid' };
+      return { type: 401, message: 'Username or password invalid' };
     } 
     const token = this.generateToke(user[0]);
-    return { token };
+    return { type: null, message: token };
   }
 
   private generateToke = (user:IUser) => {

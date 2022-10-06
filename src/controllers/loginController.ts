@@ -11,6 +11,9 @@ export default class LoginController {
   public logonUser = async (req: Request, res: Response) => {
     const userLogin = req.body;
     const logon = await this.service.logonUser(userLogin);
-    res.status(200).json(logon);
+    if (logon.type) {
+      return res.status(logon.type).json({ message: logon.message });
+    }
+    res.status(200).json({ token: logon.message });
   };
 }

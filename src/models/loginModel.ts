@@ -16,7 +16,6 @@ export default class LoginModel {
       WHERE username = ? AND password = ?`, 
       [username, password],
     );
-    console.log(result);
     
     return result;
   } 
