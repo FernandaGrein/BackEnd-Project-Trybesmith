@@ -5,7 +5,7 @@ import UserModel from '../models/userModel';
 
 const { JWT_SECRET } = process.env;
 export default class UserServices {
-  public model: UserModel;
+  private model: UserModel;
 
   constructor() {
     this.model = new UserModel(connection);
