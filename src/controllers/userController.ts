@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import UserServices from '../services/userServices';
+import 'express-async-errors';
 
 export default class UserController {
   private service: UserServices;

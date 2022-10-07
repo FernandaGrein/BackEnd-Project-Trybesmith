@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
 import OrderService from '../services/ordersServices';
-// import IextendReq from '../interfaces/request';
-// import { JwtPayload } from 'jsonwebtoken';
+import 'express-async-errors';
 
 export default class OrderController {
   private service: OrderService;

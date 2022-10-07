@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import LoginService from '../services/loginServices';
+import 'express-async-errors';
 
 export default class LoginController {
   private service: LoginService;
