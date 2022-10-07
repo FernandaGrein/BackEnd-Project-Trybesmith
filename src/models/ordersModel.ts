@@ -1,5 +1,5 @@
-import { Pool, RowDataPacket } from 'mysql2/promise';
-import IOrder from '../interfaces/oder';
+import { Pool, RowDataPacket, ResultSetHeader } from 'mysql2/promise';
+import { IOrder, INewOrder } from '../interfaces/oder';
 
 export default class OrderModel {
   private conn: Pool;
@@ -16,5 +16,17 @@ export default class OrderModel {
       GROUP BY Ord.id`,
     );
     return result;
+  }
+
+  public async createOrder(id:number, productsIds: number[]): Promise<INewOrder> {
+    const [{ insertId }] = await this.conn.execute<ResultSetHeader>(
+      'INSERT INTO Trybesmith.Orders userId VALUES ?', 
+      [id],
+    );
+    
+    productsIds.map((item) => this.conn.execute(`UPDATE Trybesmith.Products
+      SET orderId = ? WHERE id = ?`, [insertId, item]));
+
+    return { userId: id, productsIds };
   }
 }
