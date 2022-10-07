@@ -20,13 +20,14 @@ export default class OrderModel {
 
   public async createOrder(id:number, productsIds: number[]): Promise<INewOrder> {
     const [{ insertId }] = await this.conn.execute<ResultSetHeader>(
-      'INSERT INTO Trybesmith.Orders userId VALUES ?', 
+      'INSERT INTO Trybesmith.Orders (userId) VALUES (?)', 
       [id],
     );
     
-    productsIds.map((item) => this.conn.execute(`UPDATE Trybesmith.Products
+    const update = productsIds.map((item) => this.conn.execute(`UPDATE Trybesmith.Products
       SET orderId = ? WHERE id = ?`, [insertId, item]));
-
+    
+    await Promise.all(update);
     return { userId: id, productsIds };
   }
 }

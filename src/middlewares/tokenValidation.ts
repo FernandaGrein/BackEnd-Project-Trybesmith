@@ -11,8 +11,8 @@ async function tokenValidation(req: IextendReq, res: Response, next: NextFunctio
     return res.status(401).json({ message: 'Token not found' });
   }
   try {
-    const payload = jwt.verify(token, JWT_SECRET as Secret);
-    req.user = payload;
+    jwt.verify(token, JWT_SECRET as Secret);
+    // req.user = payload;
     next();
   } catch (error) {
     return res.status(401).json({ message: 'Invalid token' });

@@ -11,3 +11,10 @@ export const UserSchema = Joi.object({
   level: Joi.number().min(1).required(),
   password: Joi.string().min(8).required(),
 });
+
+export const OrdersSchema = Joi.object({
+  productsIds: Joi.array().min(1).items(Joi.number()).required()
+    .messages({
+      'array.min': '"productsIds" must include only numbers',
+    }),
+});
