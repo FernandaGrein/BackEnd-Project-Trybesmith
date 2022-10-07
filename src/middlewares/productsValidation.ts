@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import ProductSchema from './schema';
+import { ProductSchema } from './schema';
 
 function productsValidation(req: Request, res: Response, next: NextFunction) {
   const { name, amount } = req.body;
