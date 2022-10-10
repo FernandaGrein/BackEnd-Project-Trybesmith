@@ -12,3 +12,11 @@ Para ter acesso ao código desse projeto, clone o repositório e siga os passos 
  - npm install
  - npm run restore
  - npm run dev
+
+Foram cumpridos os seguintes requisitos: 
+ - Foi criado um endpoint para o cadastro de produtos, sendo validado que os campos de 'name' e 'amount' foram preenchidos corretamente.
+ - Foi criado um endpoint para a listagem de todos os produtos.
+ - Na sequencia foi criado um enpoint de cadastro de usuários, gerando um token para cada novo usuários, bem como validando se os campos de 'username', 'level' e 'password' foram preenchidos corretamente.
+ -Foi criado um endpoint para listar todos os pedidos juntamente com os ids dos produtos vinculados a cada pedido.
+ - Também foi criado um endpoint para login de cada usuário, login este que vincula o usuário ao seu token, permitindo a posterior validação deste token.
+ - E, Por fim, foi criado um endpoint para cadastro de um pedido, nele é feita a verificado se o usuário possui um token e se este é válido, verificado se foi passado de forma válida os 'productsIds' do pedido, bem como se é possível criar um pedido com 1 produto ou com vários produtos.
